@@ -90,6 +90,7 @@ export const FOOTER_COLUMNS: { title: string; links: NavLink[] }[] = [
     title: "Bedrijf",
     links: [
       { label: "Community", href: "/community" },
+      { label: "Compliance", href: "/compliance" },
       { label: "Privacy", href: "/privacy" },
       { label: "Licentie", href: "/license" },
     ],

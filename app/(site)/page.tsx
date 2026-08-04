@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { APP } from '@/lib/config'
 import { PRODUCTS } from '@/lib/site'
 import Reveal from '@/components/Reveal'
@@ -309,6 +310,63 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* -- Compliance / EU AI Act ------------------------ */}
+      <section className="py-24">
+        <div className="mx-auto max-w-6xl px-6 sm:px-10">
+          <Reveal>
+            <div className="max-w-2xl">
+              <p className="caption text-ink-muted">EU AI Act-ready</p>
+              <h2 className="display-lg mt-3 text-ink">
+                Bewijs hoe je bouwt
+                <span className="block text-ink-muted">- elke wijziging geduid</span>
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
+            {[
+              {
+                art: 'Art 50',
+                title: 'Transparantie',
+                desc: 'Elke wijziging geduid aan de agent, het model en de session die hem maakte - of aan een mens die hem reviewde.'
+              },
+              {
+                art: 'Art 26',
+                title: 'Auditlog',
+                desc: 'Een append-only log van al je agentgebruik met 6-maanden retentie standaard - klaar voor externe audit.'
+              },
+              {
+                art: 'Art 4',
+                title: 'AI-geletterdheid',
+                desc: 'Registreer attestaties en toon aan dat je team weet hoe het de agents correct gebruikt.'
+              }
+            ].map((p, i) => (
+              <Reveal key={p.art} delay={i * 90} className="h-full">
+                <div className="card h-full border border-hairline-soft p-6">
+                  <span className="label-lg grid h-8 w-fit place-items-center border border-hairline bg-surface-2 px-2.5 text-ink">
+                    {p.art}
+                  </span>
+                  <h3 className="headline mt-4 text-ink">{p.title}</h3>
+                  <p className="body mt-2 text-ink-muted">{p.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={120}>
+            <div className="mt-8 flex justify-center">
+              <Link
+                href="/compliance"
+                className="micro inline-flex items-center gap-1.5 text-accent transition-transform duration-200 hover:translate-x-0.5"
+              >
+                Meer over Athena Ledger & de EU AI Act
+                <ArrowIcon />
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 

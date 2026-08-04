@@ -7,7 +7,7 @@ import TechnicalFrame from '@/components/TechnicalFrame'
 
 export const metadata: Metadata = {
   title: 'FAQ',
-  description: `Veelgestelde vragen over ${APP.product} - agents, worktrees, privacy en platformondersteuning.`
+  description: `Veelgestelde vragen over ${APP.product} - agents, worktrees, privacy, EU AI Act compliance en platformondersteuning.`
 }
 
 type FaqGroup = {
@@ -64,6 +64,27 @@ const GROUPS: FaqGroup[] = [
       {
         q: 'Is Athena open source?',
         a: 'Ja - het hele project is MIT-gelicentieerd op GitHub. Je kunt de source lezen, het zelf bouwen of bijdragen.'
+      }
+    ]
+  },
+  {
+    topic: 'Compliance & EU AI Act',
+    items: [
+      {
+        q: 'Wat is Athena Ledger?',
+        a: 'Een opt-in code-provenance-systeem dat bijhoudt welke agent en welk model elke wijziging maakte en daar audit-ready bewijs van genereert voor de EU AI Act - transparantie (Art 50), deployer-auditlog van minimaal 6 maanden (Art 26) en AI-geletterdheid (Art 4).'
+      },
+      {
+        q: 'Kan ik hiermee aantonen dat mijn code veilig met AI is gebouwd?',
+        a: 'Athena levert het bewijsmateriaal dat normaal ontbreekt: wie deed wat, met welke agent en welk model, en of een mens het heeft nagekeken (Recital 134). Of dat aan jouw specifieke verplichtingen voldoet, hangt af van je inzet en je auditor.'
+      },
+      {
+        q: 'Wordt mijn code geüpload voor compliance?',
+        a: 'Nee. De ledger is local-first: alle records blijven op je machine en je kiest zelf wat je exporteert. Er gaat geen telemetry naar buiten.'
+      },
+      {
+        q: 'Wanneer is de volledige audit-dashboard beschikbaar?',
+        a: 'De Athena Ledger draait al in de desktop-app (opt-in). De publieke compliance-dashboard en exportflows staan op de roadmap - volg de release-notes of de pagina Compliance op deze site.'
       }
     ]
   },

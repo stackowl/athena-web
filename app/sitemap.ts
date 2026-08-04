@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/docs/cli",
     "/docs/remote",
     "/community",
+    "/compliance",
     "/guide",
     "/faq",
     "/privacy",
