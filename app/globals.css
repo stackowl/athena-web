@@ -465,3 +465,224 @@ body {
     opacity: 1;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Docs — Fumadocs-style black/white docs shell (mirrors Orca docs)
+   ───────────────────────────────────────────────────────────── */
+
+/* Design tokens (override the light/dark canvas for the docs surface) */
+.docs-bg {
+  background-color: #000;
+  color: #fff;
+}
+.docs-panel {
+  background-color: #121212; /* fd-background */
+}
+
+/* Exhaustive content typography — verbatim from Orca's Fumadocs recipe */
+.docs-content {
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgb(255 255 255 / 0.72);
+}
+.docs-content h2 {
+  color: #fff;
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 2.5rem 0 0.75rem;
+}
+.docs-content h3 {
+  color: rgb(255 255 255 / 0.9);
+  font-size: 1rem; /* 16px */
+  font-weight: 600;
+  margin: 1.75rem 0 0.5rem;
+}
+.docs-content h4 {
+  color: rgb(255 255 255 / 0.85);
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+}
+.docs-content p {
+  margin: 1rem 0;
+}
+.docs-content ul,
+.docs-content ol {
+  margin: 1rem 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+.docs-content ul {
+  list-style: disc;
+}
+.docs-content ol {
+  list-style: decimal;
+}
+.docs-content li::marker {
+  color: rgb(255 255 255 / 0.45);
+}
+.docs-content a {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: rgb(255 255 255 / 0.3);
+  text-underline-offset: 4px;
+}
+.docs-content a:hover {
+  text-decoration-color: rgb(255 255 255 / 0.7);
+}
+.docs-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  background: rgb(255 255 255 / 0.07);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: 4px;
+  padding: 2px 4px;
+  color: rgb(255 255 255 / 0.85);
+}
+.docs-content pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1.25rem 0;
+  overflow-x: auto;
+}
+.docs-content pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+.docs-content strong {
+  color: rgb(255 255 255 / 0.9);
+  font-weight: 600;
+}
+.docs-content hr {
+  border-color: rgb(255 255 255 / 0.1);
+  margin: 2.5rem 0;
+}
+.docs-content blockquote {
+  border-left: 2px solid rgb(255 255 255 / 0.2);
+  padding-left: 1rem;
+  color: rgb(255 255 255 / 0.6);
+  margin: 1.25rem 0;
+}
+.docs-content table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  font-size: 14px;
+  border-collapse: collapse;
+}
+.docs-content th {
+  text-align: left;
+  color: #fff;
+  font-weight: 600;
+  border-bottom: 1px solid rgb(255 255 255 / 0.15);
+  padding: 0.5rem 1rem 0.5rem 0;
+}
+.docs-content td {
+  border-bottom: 1px solid rgb(255 255 255 / 0.06);
+  padding: 0.5rem 1rem 0.5rem 0;
+  vertical-align: top;
+}
+.docs-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Sidebar — Fumadocs-style grouped nav */
+.docs-sidebar-item {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 8px;
+  padding: 0.5rem;
+  text-align: left;
+  font-size: 14px;
+  color: rgb(255 255 255 / 0.55);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.docs-sidebar-item:hover {
+  background: rgb(255 255 255 / 0.07);
+  color: rgb(255 255 255 / 0.9);
+}
+.docs-sidebar-item[data-active='true'] {
+  background: rgb(255 255 255 / 0.08);
+  color: #fff;
+}
+.docs-sidebar-item[data-active='true']::before {
+  content: '';
+  position: absolute;
+  inset: 0.625rem auto 0.625rem 0;
+  left: -0.75rem;
+  width: 1px;
+  background: #fff;
+}
+.docs-group-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.35);
+}
+.docs-active-link {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: rgb(255 255 255 / 0.5);
+  text-underline-offset: 6px;
+}
+
+/* Custom scrollbar for docs panels */
+.docs-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.docs-scroll::-webkit-scrollbar-thumb {
+  background: rgb(255 255 255 / 0.12);
+  border-radius: 4px;
+}
+.docs-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Steps — numbered timeline (Fumadocs-style) */
+.docs-content .docs-steps {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: step;
+  gap: 0;
+  display: block;
+}
+.docs-content .docs-steps > li {
+  position: relative;
+  padding-left: 2.5rem;
+  margin: 0 0 1.5rem;
+  counter-increment: step;
+}
+.docs-content .docs-steps > li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  color: #fff;
+  background: rgb(255 255 255 / 0.05);
+}
+.docs-content .docs-steps > li > :first-child {
+  margin-top: 0.1rem;
+}

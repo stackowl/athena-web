@@ -8,7 +8,7 @@ export const LINKS = {
   macIntel: `${APP.downloadsBase}/athena-macos-x64.dmg`,
   linuxAppImage: `${APP.downloadsBase}/athena-linux.AppImage`,
   releases: APP.releasesUrl,
-  mobile: `${APP.siteUrl}/mobile`
+  mobile: APP.releasesUrl
 }
 
 export type QrImages = {

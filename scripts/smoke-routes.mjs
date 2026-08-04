@@ -18,23 +18,7 @@ const base = `http://127.0.0.1:${port}`
 const ROUTES = [
   '/',
   '/download',
-  '/ide',
-  '/cli',
-  '/web',
-  '/mobile',
-  '/pricing',
   '/docs',
-  '/docs/getting-started',
-  '/docs/worktrees',
-  '/docs/agents',
-  '/docs/skills',
-  '/docs/cli',
-  '/docs/remote',
-  '/community',
-  '/guide',
-  '/faq',
-  '/privacy',
-  '/license',
   '/robots.txt',
   '/sitemap.xml'
 ]

@@ -1,34 +1,21 @@
 import type { MetadataRoute } from "next";
+import { DOCS_FLAT } from "@/lib/docs";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://athena.dev";
   const now = new Date();
-  const routes = [
-    "",
-    "/download",
-    "/ide",
-    "/cli",
-    "/web",
-    "/mobile",
-    "/pricing",
-    "/docs",
-    "/docs/getting-started",
-    "/docs/worktrees",
-    "/docs/agents",
-    "/docs/skills",
-    "/docs/cli",
-    "/docs/remote",
-    "/community",
-    "/compliance",
-    "/guide",
-    "/faq",
-    "/privacy",
-    "/license",
-  ];
+
+  const staticRoutes = ["", "/download", "/docs"];
+
+  const docsRoutes = DOCS_FLAT.map((p) => p.path);
+
+  const routes = [...staticRoutes, ...docsRoutes];
+
   return routes.map((route) => ({
     url: `${base}${route}`,
     lastModified: now,
     changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : 0.7,
+    priority:
+      route === "" || route === "/docs" ? 1 : route?.startsWith("/docs") ? 0.7 : 0.6,
   }));
 }

@@ -29,10 +29,7 @@ export function Logo({ size = 20 }: { size?: number }) {
   )
 }
 
-const MOBILE_EXTRA = [
-  { label: 'Gids', href: '/guide' },
-  { label: 'FAQ', href: '/faq' }
-]
+const MOBILE_EXTRA: { label: string; href: string }[] = []
 
 export default function Navbar() {
   return (

@@ -90,10 +90,10 @@ export default function BentoGrid() {
               className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"
               aria-hidden
             />
-            <figcaption className="absolute inset-x-0 bottom-0 p-5">
-              <p className="caption text-white/60">{t.eyebrow}</p>
-              <h3 className="headline mt-1 text-white">{t.title}</h3>
-              {t.desc && <p className="body mt-1.5 max-w-md text-white/75">{t.desc}</p>}
+            <figcaption className="absolute inset-x-0 bottom-0 p-4">
+              <p className="micro text-white/55">{t.eyebrow}</p>
+              <h3 className="headline-sm mt-1 text-white">{t.title}</h3>
+              {t.desc && <p className="body-sm mt-1.5 max-w-md text-white/70">{t.desc}</p>}
             </figcaption>
           </figure>
         </Reveal>

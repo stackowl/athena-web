@@ -1,13 +1,11 @@
-import Link from 'next/link'
 import { APP } from '@/lib/config'
-import { PRODUCTS } from '@/lib/site'
 import Reveal from '@/components/Reveal'
 import CountUp from '@/components/CountUp'
 import BentoGrid from '@/components/BentoGrid'
-import ProductCard from '@/components/ProductCard'
 import OrchestrationReel from '@/components/OrchestrationReel'
 import AgentIconWall from '@/components/AgentIconWall'
 import TechnicalFrame from '@/components/TechnicalFrame'
+import ConnectorLine from '@/components/ConnectorLine'
 
 /* eslint-disable @next/next/no-img-element -- static-host portable; next/image needs a server optimizer */
 
@@ -35,21 +33,21 @@ const AUDIENCES = [
   {
     title: 'Voor solo-builders',
     lede: 'Prompt één keer, krijg meerdere implementaties om te vergelijken. Je persoonlijke agent-team, op jouw machine.',
-    href: '/docs/getting-started',
+    href: '/docs/first-session',
     cta: 'Begin met bouwen',
     icon: 'M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 8V7a3 3 0 1 1 6 0v3H9z'
   },
   {
     title: 'Voor teams',
     lede: 'Elke agent werkt in zijn eigen worktree, dus parallel werk botst nooit. Review de diffs in isolatie, merge de winnaars, hou main clean.',
-    href: '/docs/worktrees',
+    href: '/docs/model/worktrees',
     cta: 'Zie hoe worktrees je veilig houden',
     icon: 'M6 3v12M18 6a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM6 18a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM18 9a9 9 0 0 1-9 9'
   },
   {
     title: 'Voor platform-engineers',
     lede: 'Skills en plugins vertalen je playbooks. Draai via SSH en WSL, self-host, en blijf MIT open source - geen lock-in, geen telemetry.',
-    href: '/docs/skills',
+    href: '/docs/cli/skills',
     cta: 'Brei Athena uit',
     icon: 'M12 2l2.4 2.4 3.4-.5.5 3.4L21 9.7l-2.4 2.4.5 3.4-3.4.5L12 20.7l-2.4-2.4-3.4.5-.5-3.4L3 9.7l2.4-2.4-.5-3.4 3.4-.5L12 2zm0 4.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11zm0 2a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7z'
   }
@@ -206,51 +204,22 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6 sm:px-10">
           <Reveal>
             <div className="max-w-2xl">
-              <p className="caption text-ink-muted">Zo werkt het</p>
-              <h2 className="display-lg mt-3 text-ink">
+              <h2 className="display-lg text-ink">
                 Live in vijf minuten
                 <span className="block text-ink-muted">- niet vijf sprints</span>
               </h2>
             </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-10 md:grid-cols-3">
+          <div className="relative mt-14 grid gap-10 md:grid-cols-3">
+            <ConnectorLine className="pointer-events-none absolute inset-x-0 top-4 hidden md:block" />
             {STEPS.map((s, i) => (
               <Reveal key={s.n} delay={i * 100} className="relative">
-                <span className="grid h-8 w-8 place-items-center border border-hairline bg-surface-1 font-mono text-xs text-ink-muted">
+                <span className="relative z-10 grid h-8 w-8 place-items-center border border-hairline bg-surface-1 font-mono text-xs text-ink-muted">
                   {s.n}
                 </span>
                 <h3 className="headline mt-4 text-ink">{s.title}</h3>
                 <p className="body mt-2 text-ink-muted">{s.desc}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* -- Product surfaces ------------------------------ */}
-      <section className="py-24">
-        <div className="mx-auto max-w-6xl px-6 sm:px-10">
-          <Reveal>
-            <div className="max-w-2xl">
-              <p className="caption text-ink-muted">Vier surfaces, één Athena</p>
-              <h2 className="display-lg mt-3 text-ink">
-                Kies je workspace
-                <span className="block text-ink-muted">- de agents blijven in parallel</span>
-              </h2>
-            </div>
-          </Reveal>
-
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {PRODUCTS.map((p, i) => (
-              <Reveal key={p.id} delay={(i % 4) * 70} className="h-full">
-                <ProductCard
-                  name={p.name}
-                  tagline={p.tagline}
-                  href={p.href}
-                  icon={p.icon}
-                  badge={p.badge}
-                />
               </Reveal>
             ))}
           </div>
@@ -262,8 +231,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6 sm:px-10">
           <Reveal>
             <div className="max-w-2xl">
-              <p className="caption text-ink-muted">De workspace</p>
-              <h2 className="display-lg mt-3 text-ink">
+              <h2 className="display-lg text-ink">
                 Eén venster, een heel team agents
                 <span className="block text-ink-muted">- echte screens uit de desktop-app</span>
               </h2>
@@ -280,8 +248,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6 sm:px-10">
           <Reveal>
             <div className="max-w-2xl">
-              <p className="caption text-ink-muted">Waarom Athena?</p>
-              <h2 className="display-lg mt-3 text-ink">
+              <h2 className="display-lg text-ink">
                 Gemaakt voor hoe jij werkt
                 <span className="block text-ink-muted">- niet hoe jouw stack het wil</span>
               </h2>
@@ -313,63 +280,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* -- Compliance / EU AI Act ------------------------ */}
-      <section className="py-24">
-        <div className="mx-auto max-w-6xl px-6 sm:px-10">
-          <Reveal>
-            <div className="max-w-2xl">
-              <p className="caption text-ink-muted">EU AI Act-ready</p>
-              <h2 className="display-lg mt-3 text-ink">
-                Bewijs hoe je bouwt
-                <span className="block text-ink-muted">- elke wijziging geduid</span>
-              </h2>
-            </div>
-          </Reveal>
-
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
-            {[
-              {
-                art: 'Art 50',
-                title: 'Transparantie',
-                desc: 'Elke wijziging geduid aan de agent, het model en de session die hem maakte - of aan een mens die hem reviewde.'
-              },
-              {
-                art: 'Art 26',
-                title: 'Auditlog',
-                desc: 'Een append-only log van al je agentgebruik met 6-maanden retentie standaard - klaar voor externe audit.'
-              },
-              {
-                art: 'Art 4',
-                title: 'AI-geletterdheid',
-                desc: 'Registreer attestaties en toon aan dat je team weet hoe het de agents correct gebruikt.'
-              }
-            ].map((p, i) => (
-              <Reveal key={p.art} delay={i * 90} className="h-full">
-                <div className="card h-full border border-hairline-soft p-6">
-                  <span className="label-lg grid h-8 w-fit place-items-center border border-hairline bg-surface-2 px-2.5 text-ink">
-                    {p.art}
-                  </span>
-                  <h3 className="headline mt-4 text-ink">{p.title}</h3>
-                  <p className="body mt-2 text-ink-muted">{p.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={120}>
-            <div className="mt-8 flex justify-center">
-              <Link
-                href="/compliance"
-                className="micro inline-flex items-center gap-1.5 text-accent transition-transform duration-200 hover:translate-x-0.5"
-              >
-                Meer over Athena Ledger & de EU AI Act
-                <ArrowIcon />
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* -- CTA ------------------------------------------ */}
       <section className="py-24">
         <div className="mx-auto max-w-3xl px-6 text-center sm:px-10">
@@ -388,8 +298,9 @@ export default function Home() {
                   <ArrowIcon />
                 </span>
               </a>
-              <a href="/guide" className="btn btn-secondary">
-                Lees de vijf-minuten-gids
+              <a href={APP.githubUrl} target="_blank" rel="noreferrer" className="btn btn-secondary">
+                <GithubIcon />
+                Bekijk het op GitHub
               </a>
             </div>
             <p className="micro mt-4 text-ink-muted">macOS · Windows · Linux</p>
