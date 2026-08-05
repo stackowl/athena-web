@@ -7,7 +7,7 @@ export const APP = {
   name: 'Athena',
   product: 'Athena ADE',
   tagline: 'Agentic Development Environment',
-  version: '0.0.1',
+  version: '1.6.0',
   description:
     'Athena ADE draait Codex, Claude Code, OpenCode en Pi naast elkaar — elk in een eigen geïsoleerde git-worktree, bijgehouden in één bord. Geen bestandsbotsingen, geen verloren context, geen mysterieuze agents. Local-first en open source.',
   githubUrl: 'https://github.com/stackowl/athena',

@@ -92,7 +92,7 @@ export default function Home() {
           >
             <span className="status-pulse h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />
             <span className="caption text-ink-muted">
-              v{APP.version} · pre-release
+              v{APP.version}
               <span className="mx-2 text-ink-muted/50">—</span>
               <span className="text-accent">Windows is live</span>
             </span>
@@ -232,8 +232,7 @@ export default function Home() {
           <Reveal>
             <div className="max-w-2xl">
               <h2 className="display-lg text-ink">
-                Eén venster, een heel team agents
-                <span className="block text-ink-muted">- echte screens uit de desktop-app</span>
+                Zie Athena in actie
               </h2>
             </div>
           </Reveal>
