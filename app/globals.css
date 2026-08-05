@@ -467,7 +467,7 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   Docs — Fumadocs-style black/white docs shell (mirrors Orca docs)
+   Docs — Fumadocs-style black/white docs shell (mirrors Athena docs)
    ───────────────────────────────────────────────────────────── */
 
 /* Design tokens (override the light/dark canvas for the docs surface) */
@@ -479,7 +479,7 @@ body {
   background-color: #121212; /* fd-background */
 }
 
-/* Exhaustive content typography — verbatim from Orca's Fumadocs recipe */
+/* Exhaustive content typography — verbatim from Athena's Fumadocs recipe */
 .docs-content {
   font-size: 15px;
   line-height: 1.75;

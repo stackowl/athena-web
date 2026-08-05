@@ -23,9 +23,9 @@ in this repo, reuse their facts):
 - Orchestration: task DAGs, decision gates, `worker_done/escalation/question` checks.
 - Mobile companion (early access, iOS/Android).
 
-**Honesty rule:** if a page mirrors an Orca feature that Athena does not ship yet, write clear,
+**Honesty rule:** if a page mirrors a feature that Athena does not ship yet, write clear,
 accurate copy about the closest Athena capability and mark it "Roadmap" / "coming soon". Do NOT
-fabricate features. Keep pages short and concrete — matching the Orca docs tone (lead with the
+fabricate features. Keep pages short and concrete — matching the Athena docs tone (lead with the
 behavior, then a how-to, then a callout).
 
 ## Component API — USE THESE EXACTLY (do not invent new components)

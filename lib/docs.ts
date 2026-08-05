@@ -1,6 +1,6 @@
 /**
  * Docs navigation tree — mirrors the onorca.dev/docs structure (slugs kept
- * identical) so the Athena docs read like the Orca docs shell. Flat lists
+ * identical) so the Athena docs read like the Athena docs shell. Flat lists
  * are derived for prev/next pagination.
  */
 
