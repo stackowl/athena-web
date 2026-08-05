@@ -43,7 +43,7 @@ export default function InstallPage() {
     >
       <h2 id="download">Download</h2>
       <ul className="hidden md:grid">
-        {DOWNLOADS.map((d, i) => (
+        {DOWNLOADS.map((d) => (
           <li key={`${d.platform}-${d.arch}`} className="not:grid">
             <p>
               <strong>{d.platform}:</strong>{' '}

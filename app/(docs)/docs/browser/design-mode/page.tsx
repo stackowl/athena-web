@@ -16,10 +16,10 @@ export default function DesignModePage() {
       <p>
         Design Mode is an embedded browser where you can steer the UI as an agent would. Point it at a
         running app and let the agent iterate the interface, making changes and seeing them update
-        live. It's perfect for fixing UI bugs or exploring how new features would feel.
+        live. It&apos;s perfect for fixing UI bugs or exploring how new features would feel.
       </p>
 
-      <h2 id="browser"><!-- h2 -->/browser/overview/page.tsx"<!-- /h2 -->
+      <h2 id="browser">Where it lives</h2>
       <p>
         Design Mode runs inside a worktree’s browser tab. It is an isolated browser window that
         synchronizes with the worktree’s state. The browser reflects exactly what the app is

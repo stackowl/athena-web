@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import DocsArticle from '@/components/docs/DocsArticle'
 import Callout from '@/components/docs/Callout'
 

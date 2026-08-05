@@ -24,7 +24,8 @@ export const DOCS_NAV: DocsGroup[] = [
       { slug: 'tabs-panes-splits', title: 'Tabs, panes & split layouts', path: '/docs/model/tabs-panes-splits' },
       { slug: 'agents-sessions', title: 'Agents & sessions', path: '/docs/model/agents-sessions' },
       { slug: 'session-restore', title: 'Session restore', path: '/docs/model/session-restore' },
-      { slug: 'quick-open', title: 'Quick Open & Jump Palette', path: '/docs/model/quick-open' }
+      { slug: 'quick-open', title: 'Quick Open & Jump Palette', path: '/docs/model/quick-open' },
+      { slug: 'hibernation', title: 'Agent hibernation', path: '/docs/model/hibernation' }
     ]
   },
   {

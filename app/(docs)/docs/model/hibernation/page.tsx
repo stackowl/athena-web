@@ -22,24 +22,22 @@ starts exactly from where you left off – no lost context.
       <h2 id="hibernate">Hibernate Agent</h2>
       <p>
         To hibernate an agent, navigate to its worktree and run:
-        <code>athena agent hibernate</code>. This freezes all agent activity, but keeps the</p>
-        <Callout type="info">
-          <p>worktree intact. The agent’s environment variables, installed dependencies, and network state</p>
-        </Callout>
-        <p>are all preserved.</p>
+        <code>athena agent hibernate</code>. This freezes all agent activity, but keeps the
+        worktree intact. The agent’s environment variables, installed dependencies, and network
+        state are all preserved.
       </p>
 
       <h2 id="resume">Resume Agent</h2>
       <p>
         To wake the agent, use:
-        <code>athena agent resume</code>. The agent will pick up its last task automatically,</p>
+        <code>athena agent resume</code>. The agent will pick up its last task automatically.
       </p>
       <pre>{`🔍 The hibernated state
             worktree: hibernated/claude-fix
             git-hash: 3b2457d
 hibernation-duration: 8h23m
             resume-prompt: Fix the login redirect so a session survives a page refresh.`}</pre>
-      <hr>
+      <hr />
       <p>
         Key benefits:
         • Zero time wasted resetting context
@@ -50,7 +48,7 @@ hibernation-duration: 8h23m
       <Callout type="success" title="The Whole Picture">
         <p>
           Hibernation bridges development state with operational continuity – no more cold starts
-or forced reset when interruptions occur.</p>
+          or forced reset when interruptions occur.
         </p>
       </Callout>
     </DocsArticle>

@@ -25,6 +25,7 @@ const ROUTES = [
 
 const AGENT_ICON_RE = /\/agent-icons\/[^"')]+\.png/g
 const ASSET_RE = /\/(?:screens|community|agent-icons)\/[^"')]+\.(?:jpg|gif|png|webp)/g
+const SITEMAP_URL_RE = /<loc>([^<]+)<\/loc>/g
 
 if (!existsSync(join(root, '.next'))) {
   console.error('✗ .next build not found — run `npm run build` first')
@@ -75,6 +76,21 @@ function fail(msg) {
 
 try {
   await waitUntilReady()
+
+  // Derive every docs route from the generated sitemap so new pages are
+  // always covered without editing this script.
+  const sitemapRes = await fetch(`${base}/sitemap.xml`)
+  if (sitemapRes.status !== 200) {
+    fail('/sitemap.xml -> HTTP ' + sitemapRes.status)
+  } else {
+    const sitemap = await sitemapRes.text()
+    for (const m of sitemap.matchAll(SITEMAP_URL_RE)) {
+      const url = new URL(m[1]).pathname
+      if (!ROUTES.includes(url)) {
+        ROUTES.push(url)
+      }
+    }
+  }
 
   const checked = new Set()
   for (const route of ROUTES) {

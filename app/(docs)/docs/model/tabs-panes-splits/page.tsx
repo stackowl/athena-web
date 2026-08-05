@@ -24,7 +24,7 @@ export default function TabsPanesSplitsPage() {
       <p>
         Click the terminal header and choose <strong>Split</strong>, then select a direction. Each split
         gets its own terminal id and can be controlled independently: <code>athena terminal send --terminal
-term-3 --text "git status" --enter</code>. Run background jobs or prompts in one pane while
+term-3 --text &quot;git status&quot; --enter</code>. Run background jobs or prompts in one pane while
 watching the other.
       </p>
 

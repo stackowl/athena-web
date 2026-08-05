@@ -15,7 +15,7 @@ export default function AnnouncementBar() {
   }
 
   return (
-    <div className="relative flex h-10 items-center justify-center bg-black px-12">
+    <div className="relative flex h-10 items-center justify-center border-b border-hairline bg-black px-12">
       <a
         href={APP.releasesUrl}
         target="_blank"

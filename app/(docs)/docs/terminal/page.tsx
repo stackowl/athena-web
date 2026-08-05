@@ -42,7 +42,7 @@ export default function TerminalPage() {
 
       <h2 id="commands">4. Useful terminal commands</h2>
       <ul>
-        <li><code>athena terminal send --terminal term-1 --text "git status" --enter</code></li>
+        <li><code>athena terminal send --terminal term-1 --text &quot;git status&quot; --enter</code></li>
         <li><code>athena terminal wait --terminal term-1 --for tui-idle --timeout-ms 60000</code></li>
       </ul>
 
