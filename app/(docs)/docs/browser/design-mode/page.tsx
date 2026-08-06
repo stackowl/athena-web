@@ -21,8 +21,8 @@ export default function DesignModePage() {
 
       <h2 id="browser">Where it lives</h2>
       <p>
-        Design Mode runs inside a worktree’s browser tab. It is an isolated browser window that
-        synchronizes with the worktree’s state. The browser reflects exactly what the app is
+        Design Mode runs inside a worktree's browser tab. It is an isolated browser window that
+        synchronizes with the worktree's state. The browser reflects exactly what the app is
         showing at that moment.
       </p>
 
@@ -37,13 +37,15 @@ export default function DesignModePage() {
       <h2 id="inspect">
         2. Inspect elements
       </h2>
-      The Design Mode browser includes a <em>devtools</em> that lets you inspect elements and apply
-      changes. You can also use the <em>Design Mode panel</em> to edit component props in real-time.
+      <p>
+        Use the "Steer" button to open the steering panel. This shows the most recent actions performed
+        by the agent in that tab, letting you issue commands or review logs without switching contexts.
+      </p>
 
       <Callout type="info" title="Live editing">
         <p>
           Changes you make in Design Mode are persisted to the project and visible to all agents.
-          This allows you to prototype UI changes before they’re committed.
+          This allows you to prototype UI changes before they&apos;re committed.
         </p>
       </Callout>
     </DocsArticle>

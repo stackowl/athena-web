@@ -15,15 +15,13 @@ export default function HooksMemoryPage() {
       lede="Skills, plugins, hooks, and cross-session memory shape how agents behave and what context they keep."
     >
       <p>
-        An agent&apos;s behavior and context come from more than its prompt. Four mechanisms shape what
+        An agent's behavior and context come from more than its prompt. Four mechanisms shape what
         it can do and what it remembers: skills, plugins, hooks, and cross-session memory.
       </p>
 
       <h2 id="skills">Skills</h2>
       <p>
-        Skills are markdown instructions an agent can load on demand — project conventions, release
-        automation, security review. They keep an agent grounded in your working style without bloating
-        every prompt. See the{' '}
+        Skills are markdown instructions an agent grounded in your working style without bloating every prompt. See the{' '}
         <Link href="/docs/cli/skills">skills reference</Link>.
       </p>
 
