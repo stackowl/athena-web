@@ -12,6 +12,7 @@ export type NavLink = {
 };
 
 export const PRIMARY_NAV: NavLink[] = [
+  { label: "Ledger & EU Act", href: "/ledger" },
   { label: "Docs", href: "/docs" },
 ];
 
@@ -20,6 +21,7 @@ export const FOOTER_COLUMNS: { title: string; links: NavLink[] }[] = [
     title: "Product",
     links: [
       { label: "Download", href: "/download" },
+      { label: "Ledger & EU AI Act", href: "/ledger" },
       { label: "Docs", href: "/docs" },
       { label: "GitHub", href: APP.githubUrl, external: true },
       { label: "Releases", href: APP.releasesUrl, external: true },

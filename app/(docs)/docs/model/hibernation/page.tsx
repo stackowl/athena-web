@@ -14,16 +14,14 @@ export default function HibernationPage() {
       lede="Pause an agent suspending its worktree while keeping all context and state intact for later resumption."
     >
       <p>
-        Hibernation allows you to temporarily stop an agent’s work without losing any progress. The agent’s
-worktree, code results, and any in-progress tasks remain preserved in the hibernated state. Resuming
-starts exactly from where you left off – no lost context.
+        Hibernation allows you to temporarily stop an agent work without losing any progress. The agent worktree, code results, and any in-progress tasks remain preserved in the hibernated state. Resuming starts exactly from where you left off - no lost context.
       </p>
 
       <h2 id="hibernate">Hibernate Agent</h2>
       <p>
         To hibernate an agent, navigate to its worktree and run:
         <code>athena agent hibernate</code>. This freezes all agent activity, but keeps the
-        worktree intact. The agent’s environment variables, installed dependencies, and network
+        worktree intact. The agent's environment variables, installed dependencies, and network
         state are all preserved.
       </p>
 
@@ -32,10 +30,11 @@ starts exactly from where you left off – no lost context.
         To wake the agent, use:
         <code>athena agent resume</code>. The agent will pick up its last task automatically.
       </p>
+
       <pre>{`🔍 The hibernated state
             worktree: hibernated/claude-fix
             git-hash: 3b2457d
-hibernation-duration: 8h23m
+            hibernation-duration: 8h23m
             resume-prompt: Fix the login redirect so a session survives a page refresh.`}</pre>
       <hr />
       <p>
@@ -45,6 +44,7 @@ hibernation-duration: 8h23m
         • Prevent wasted-capacity context switches
         • Maintain atomic state for rollback if needed
       </p>
+
       <Callout type="success" title="The Whole Picture">
         <p>
           Hibernation bridges development state with operational continuity – no more cold starts
