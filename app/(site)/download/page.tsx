@@ -34,8 +34,6 @@ export default async function DownloadPage() {
     <TechnicalFrame>
       <div>
         <DownloadHero />
-        {/* full-width dashed line under the hero / 3 boxes */}
-        <LineHDashed className="text-hairline" />
         <DownloadSections qrs={qrs} />
       </div>
     </TechnicalFrame>

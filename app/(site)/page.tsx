@@ -1,11 +1,15 @@
+'use client'
+
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { APP } from '@/lib/config'
 import Reveal from '@/components/Reveal'
 import CountUp from '@/components/CountUp'
-import BentoGrid from '@/components/BentoGrid'
 import OrchestrationReel from '@/components/OrchestrationReel'
 import AgentIconWall from '@/components/AgentIconWall'
 import TechnicalFrame from '@/components/TechnicalFrame'
-import ConnectorLine from '@/components/ConnectorLine'
+import { TextShimmer } from '@/components/TextShimmer'
+import { useLanguage } from '@/components/LanguageContext'
 
 /* eslint-disable @next/next/no-img-element -- static-host portable; next/image needs a server optimizer */
 
@@ -53,6 +57,43 @@ const AUDIENCES = [
   }
 ]
 
+function FluidStepsStack({ steps }: { steps: { n: string; title: string; desc: string }[] }) {
+  const [activeIdx, setActiveIdx] = useState(0)
+
+  return (
+    <div className="grid gap-6 md:grid-cols-3">
+      {steps.map((step, idx) => {
+        const isActive = activeIdx === idx
+        return (
+          <motion.div
+            key={step.n}
+            layout
+            onClick={() => setActiveIdx(idx)}
+            className={`cursor-pointer rounded-2xl border p-8 transition-colors duration-200 ${
+              isActive
+                ? 'border-primary/40 bg-surface-1'
+                : 'border-hairline bg-surface-1/40 hover:border-white/20'
+            }`}
+          >
+            <div className="flex items-baseline justify-between">
+              <span className="font-mono text-xs font-semibold text-primary">{step.n}</span>
+              {isActive && (
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="inline-block h-2 w-2 rounded-full bg-primary"
+                />
+              )}
+            </div>
+            <h3 className="mt-4 text-xl font-semibold text-ink">{step.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-ink-muted">{step.desc}</p>
+          </motion.div>
+        )
+      })}
+    </div>
+  )
+}
+
 function ArrowIcon() {
   return (
     <svg
@@ -80,69 +121,72 @@ function GithubIcon() {
 }
 
 export default function Home() {
+  const { t } = useLanguage()
+
   return (
     <TechnicalFrame>
       {/* -- Hero --------------------------------------- */}
-      <section className="relative overflow-hidden text-center">
-        <div className="relative z-10 mx-auto max-w-6xl px-6 pb-24 pt-16 sm:px-10 sm:pt-24">
-          <a
-            href="/download"
-            className="anim-hero inline-flex items-center gap-2 border border-hairline bg-surface-1 px-3 py-1.5 transition-colors hover:border-hairline hover:bg-surface-2"
-            style={{ animationDelay: '0ms' }}
-          >
-            <span className="status-pulse h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />
-            <span className="caption text-ink-muted">
-              v{APP.version}
-              <span className="mx-2 text-ink-muted/50">—</span>
-              <span className="text-accent">Windows is live</span>
-            </span>
-          </a>
+      <section className="relative overflow-hidden text-center pt-8 pb-16 sm:pt-16 sm:pb-24">
+        {/* Full-Bleed 35 Agent CLI Background Wall */}
+        <div className="pointer-events-none absolute inset-0 opacity-35 overflow-hidden scale-105" aria-hidden>
+          <AgentIconWall repeat={3} variant="background" />
+        </div>
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_70%_at_50%_35%,rgba(10,11,13,0.65),#0a0b0d)]" aria-hidden />
 
+        <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-10">
+          {/* Main Headline with Inline Logo Badge */}
           <h1
-            className="anim-hero display-xl mx-auto mt-8 max-w-4xl text-ink"
+            className="anim-hero display-xl mx-auto mt-0 max-w-4xl text-ink"
             style={{ animationDelay: '90ms' }}
           >
-            Je agents, in parallel
-            <span className="block text-ink-muted">zonder opstoppingen</span>
+            {t.hero.title} <TextShimmer>{t.hero.shimmerText}</TextShimmer>
+            <span className="block text-ink-muted">{t.hero.subhead}</span>
           </h1>
 
-          <div className="anim-hero mt-10" style={{ animationDelay: '360ms' }}>
-            <img
-              src="/screens/hero.jpg"
-              alt="De Athena desktop-app die agents draait in parallelle worktrees"
-              className="mx-auto w-full max-w-3xl border border-hairline-soft shadow-[0_20px_60px_rgba(0,0,0,0.45)]"
-              fetchPriority="high"
-            />
-          </div>
-
+          {/* Subtitle / Description */}
           <p
             className="anim-hero body-lg mx-auto mt-8 max-w-2xl text-ink-muted"
             style={{ animationDelay: '180ms' }}
           >
-            Draai Codex, Claude Code, OpenCode of Pi naast elkaar. Athena geeft elke agent zijn eigen
-            geïsoleerde worktree zodat ze nooit botsen op jouw bestanden, houdt elke branch en PR bij
-            in één board en bewaart context tussen sessions - alles op jouw machine.
+            {t.hero.desc}
           </p>
 
+          {/* CTA Buttons */}
           <div
-            className="anim-hero mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+            className="anim-hero mt-8 flex flex-row items-center justify-center gap-3 sm:gap-4"
             style={{ animationDelay: '225ms' }}
           >
-            <a href="/download" className="btn btn-primary group">
-              Download Athena
+            <a
+              href="/download"
+              className="btn btn-primary group"
+            >
+              {t.hero.downloadBtn}
               <span className="transition-transform duration-200 group-hover:translate-x-0.5">
                 <ArrowIcon />
               </span>
             </a>
             <a
-              href="https://github.com/stackowl/athena"
-              target="_blank"
-              rel="noreferrer"
+              href="/docs"
               className="btn btn-secondary"
             >
-              <GithubIcon />
-              Bekijk op GitHub
+              Documentation
             </a>
+          </div>
+
+          {/* Main Hero App Screenshot with Ambient Glow */}
+          <div className="anim-hero relative mt-12 sm:mt-16" style={{ animationDelay: '360ms' }}>
+            {/* Ambient Light / Glow behind the hero image */}
+            <div 
+              className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[350px] w-[80%] rounded-full bg-primary/20 blur-[100px] opacity-70"
+              aria-hidden
+            />
+
+            <img
+              src="/screens/hero.jpg"
+              alt="Athena Desktop App"
+              className="relative z-10 w-full max-w-4xl mx-auto rounded-2xl border border-hairline-soft shadow-[0_20px_80px_rgba(0,0,0,0.7)]"
+              fetchPriority="high"
+            />
           </div>
         </div>
       </section>
@@ -155,7 +199,7 @@ export default function Home() {
               className="display-lg mx-auto max-w-3xl text-center text-ink"
               style={{ fontSize: 'clamp(2.75rem, 7vw, 3.75rem)' }}
             >
-              Eén platform om ze allemaal te orkestreren.
+              {t.funnel.title}
             </h2>
           </Reveal>
           <Reveal delay={120}>
@@ -169,31 +213,12 @@ export default function Home() {
         <div className="divide-y divide-dashed divide-hairline">
           {STATS.map((s, i) => (
             <Reveal key={s.label} delay={i * 80}>
-              {i === 0 ? (
-                /* first stat — agent-icon wall as the block background */
-                <div className="relative min-h-[160px] overflow-hidden">
-                  <div className="pointer-events-none absolute inset-0 opacity-30" aria-hidden>
-                    <AgentIconWall />
-                  </div>
-                  <div
-                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_55%_at_50%_50%,rgba(10,11,13,0.9),rgba(10,11,13,0.35))]"
-                    aria-hidden
-                  />
-                  <div className="relative z-10 flex min-h-[160px] flex-col items-center justify-center px-4 text-center">
-                    <p className="display-md text-ink">
-                      <CountUp to={s.to} suffix={s.suffix} />
-                    </p>
-                    <p className="caption mt-2 text-ink-muted">{s.label}</p>
-                  </div>
-                </div>
-              ) : (
-                <div className="flex flex-col items-center justify-center px-4 py-10 text-center">
-                  <p className="display-md text-ink">
-                    <CountUp to={s.to} suffix={s.suffix} />
-                  </p>
-                  <p className="caption mt-2 text-ink-muted">{s.label}</p>
-                </div>
-              )}
+              <div className="flex flex-col items-center justify-center px-4 py-10 text-center">
+                <p className="display-md text-ink">
+                  <CountUp to={s.to} suffix={s.suffix} />
+                </p>
+                <p className="caption mt-2 text-ink-muted">{s.label}</p>
+              </div>
             </Reveal>
           ))}
         </div>
@@ -205,40 +230,21 @@ export default function Home() {
           <Reveal>
             <div className="max-w-2xl">
               <h2 className="display-lg text-ink">
-                Live in vijf minuten
-                <span className="block text-ink-muted">- niet vijf sprints</span>
+                {t.howItWorks.title}
+                <span className="block text-ink-muted">{t.howItWorks.subhead}</span>
               </h2>
             </div>
           </Reveal>
 
-          <div className="relative mt-14 grid gap-10 md:grid-cols-3">
-            <ConnectorLine className="pointer-events-none absolute inset-x-0 top-4 hidden md:block" />
-            {STEPS.map((s, i) => (
-              <Reveal key={s.n} delay={i * 100} className="relative">
-                <span className="relative z-10 grid h-8 w-8 place-items-center border border-hairline bg-surface-1 font-mono text-xs text-ink-muted">
-                  {s.n}
-                </span>
-                <h3 className="headline mt-4 text-ink">{s.title}</h3>
-                <p className="body mt-2 text-ink-muted">{s.desc}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* -- Real screens in a bento grid ------------------ */}
-      <section className="py-24">
-        <div className="mx-auto max-w-6xl px-6 sm:px-10">
-          <Reveal>
-            <div className="max-w-2xl">
-              <h2 className="display-lg text-ink">
-                Zie Athena in actie
-              </h2>
-            </div>
+          <Reveal delay={120} className="mt-14">
+            <FluidStepsStack
+              steps={[
+                { n: '01', title: t.howItWorks.step1Title, desc: t.howItWorks.step1Desc },
+                { n: '02', title: t.howItWorks.step2Title, desc: t.howItWorks.step2Desc },
+                { n: '03', title: t.howItWorks.step3Title, desc: t.howItWorks.step3Desc },
+              ]}
+            />
           </Reveal>
-          <div className="mt-14">
-            <BentoGrid />
-          </div>
         </div>
       </section>
 
@@ -259,16 +265,21 @@ export default function Home() {
               <Reveal key={a.title} delay={i * 90} className="h-full">
                 <a
                   href={a.href}
-                  className="card group flex h-full flex-col border border-hairline-soft p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-hairline hover:bg-surface-2"
+                  className="group flex h-full flex-col rounded-2xl border border-white/10 bg-surface-1/60 p-7 backdrop-blur-md transition-colors duration-200 hover:border-primary/40"
                 >
-                  <span className="grid h-10 w-10 place-items-center bg-surface-2 text-ink transition-colors duration-300 group-hover:bg-canvas">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden>
-                      <path d={a.icon} />
-                    </svg>
-                  </span>
-                  <h3 className="headline mt-5 text-ink">{a.title}</h3>
-                  <p className="body mt-2 flex-1 text-ink-muted">{a.lede}</p>
-                  <span className="micro mt-4 inline-flex items-center gap-1 text-accent transition-transform duration-200 group-hover:translate-x-0.5">
+                  <div className="flex items-center justify-between">
+                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-surface-2 text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-black">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden>
+                        <path d={a.icon} />
+                      </svg>
+                    </span>
+                    <span className="font-mono text-[10px] font-medium tracking-wider text-ink-muted uppercase">
+                      [ WORKFLOW ]
+                    </span>
+                  </div>
+                  <h3 className="headline-sm mt-5 text-ink group-hover:text-primary transition-colors">{a.title}</h3>
+                  <p className="body-sm mt-2 flex-1 text-ink-muted leading-relaxed">{a.lede}</p>
+                  <span className="micro mt-5 inline-flex items-center gap-1.5 font-mono text-primary transition-transform duration-200 group-hover:translate-x-1">
                     {a.cta}
                     <ArrowIcon />
                   </span>
@@ -283,26 +294,27 @@ export default function Home() {
       <section className="py-24">
         <div className="mx-auto max-w-3xl px-6 text-center sm:px-10">
           <Reveal>
-            <h2 className="display-lg text-ink">Maak de switch naar parallel development.</h2>
+            <h2 className="display-lg text-ink">
+              {t.cta.title} <TextShimmer>{t.cta.shimmerText}</TextShimmer>.
+            </h2>
             <p className="body-lg mt-4 text-ink-muted">
-              Download Athena ADE en geef je volgende feature een heel team agents.
+              {t.cta.desc}
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="mt-10 flex flex-row items-center justify-center gap-3 sm:gap-4">
               <a
                 href="/download"
                 className="btn btn-primary group transition-shadow hover:shadow-[0_0_60px_rgba(50,240,140,0.3)]"
               >
-                Download Athena - het is gratis
+                {t.cta.downloadBtn}
                 <span className="transition-transform duration-200 group-hover:translate-x-0.5">
                   <ArrowIcon />
                 </span>
               </a>
-              <a href={APP.githubUrl} target="_blank" rel="noreferrer" className="btn btn-secondary">
-                <GithubIcon />
-                Bekijk het op GitHub
+              <a href="/docs" className="btn btn-secondary">
+                Documentation
               </a>
             </div>
-            <p className="micro mt-4 text-ink-muted">macOS · Windows · Linux</p>
+            <p className="micro mt-4 text-ink-muted">{t.cta.osList}</p>
           </Reveal>
         </div>
       </section>

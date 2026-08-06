@@ -35,11 +35,15 @@ export const metadata: Metadata = {
   }
 }
 
+import { LanguageProvider } from '@/components/LanguageContext'
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${inter.variable} font-sans antialiased`}>
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
         <Analytics />
       </body>
     </html>

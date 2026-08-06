@@ -164,6 +164,7 @@ body {
     font-weight: 500;
     line-height: 1;
     letter-spacing: -0.14px;
+    white-space: nowrap;
     border-radius: var(--radius-md);
     transition:
       opacity 0.15s ease,

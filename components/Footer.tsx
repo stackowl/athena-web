@@ -1,11 +1,20 @@
+'use client'
+
 import Link from 'next/link'
 import { APP } from '@/lib/config'
 import { FOOTER_COLUMNS } from '@/lib/site'
 import { Logo } from './Navbar'
+import { useLanguage } from './LanguageContext'
 
-export default function Footer() {
+export default function Footer({
+  className = 'border-t border-hairline bg-canvas'
+}: {
+  className?: string
+}) {
+  const { t } = useLanguage()
+
   return (
-    <footer className="border-t border-hairline bg-canvas">
+    <footer className={className}>
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
@@ -46,10 +55,10 @@ export default function Footer() {
 
         <div className="micro mt-12 flex flex-col gap-3 pt-6 text-ink-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {APP.year} {APP.product}. Alle rechten voorbehouden.
+            © {APP.year} {APP.name}. {t.footer.rights}
           </p>
           <p>
-            {APP.license}-licentie · v{APP.version}
+            {APP.license} · v{APP.version}
           </p>
         </div>
       </div>

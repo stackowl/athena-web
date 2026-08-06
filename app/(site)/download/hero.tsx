@@ -5,7 +5,7 @@
  */
 export default function DownloadHero() {
   return (
-    <section className="mx-auto max-w-6xl px-4 pb-16 pt-20 text-center sm:px-6">
+    <section className="mx-auto max-w-6xl px-4 pb-16 pt-10 sm:pt-14 text-center sm:px-6">
       <h2 className="display-xl text-balance text-ink">Download Athena.</h2>
       <p className="mx-auto mt-4 max-w-xl text-balance text-lg text-ink-muted lg:text-xl">
         Beschikbaar voor Windows.

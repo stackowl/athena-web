@@ -18,21 +18,8 @@ export default function TechnicalFrame({
   className?: string
 }) {
   return (
-    <div className={`relative border-x border-hairline ${className}`}>
-      {/* outer hatch bands */}
-      <Hatch className="pointer-events-none absolute inset-y-0 left-0 hidden w-[8.333%] text-surface-2 lg:block" />
-      <Hatch className="pointer-events-none absolute inset-y-0 right-0 hidden w-[8.333%] text-surface-2 lg:block" />
-
-      {/* flanking dashed gridlines, aligned to the content column */}
-      <div className="pointer-events-none absolute inset-0 hidden lg:block" aria-hidden>
-        <div className="mx-auto flex h-full max-w-6xl justify-between px-4 sm:px-6">
-          <LineV className="text-hairline" />
-          <LineV className="text-hairline" />
-        </div>
-      </div>
-
-      {/* content — a 1px dashed hairline separates stacked sections (like /download) */}
-      <div className="divide-y divide-dashed divide-hairline">{children}</div>
+    <div className={`relative ${className}`}>
+      {children}
     </div>
   )
 }
